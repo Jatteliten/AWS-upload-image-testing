@@ -1,4 +1,4 @@
-.env:
+Environment variables:
 
 spring.datasource.url=
 
