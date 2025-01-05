@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniels lilla AWS test-sida</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+  <div class="h-100 d-flex align-items-center justify-content-center" style="padding-top:20px">
+    <div th:if="${#lists.isEmpty(postsToday)}">
+      No posts on selected date
+    </div>
+    <div th:each="post : ${postsToday}" class="border-bottom">
+      <p th:text="${post.text}"></p>
+      <img th:src="${post.imageLink.URL}" alt="Post Image" style="max-width: 100%; height: auto;">
+    </div>
+  </div>
+
+  <br/>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+
+  <form th:action="@{/submit-date}" method="post" th:object="${dateForm}">
+    <label for="date">Pick a Date:</label>
+    <input type="date" id="date" th:field="*{selectedDate}" required />
+
+    <button type="submit" class="btn btn-success btn-sm">Submit</button>
+  </form>
+  </div>
+</body>
+</html>

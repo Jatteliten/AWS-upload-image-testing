@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ladda upp en post</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<h1>Create a Post</h1>
+
+  <form th:action="@{/post/submitPost}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="postText">Input some text:</label>
+      <input type="text" id="postText" name="postText" class="form-control" required placeholder="Enter post text">
+    </div>
+
+    <div class="form-group">
+      <label for="file">Choose an image:</label>
+      <input type="file" id="file" name="file" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Post</button>
+  </form>
+
+</body>
+</html>
