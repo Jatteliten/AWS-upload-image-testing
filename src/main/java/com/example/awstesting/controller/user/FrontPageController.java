@@ -18,16 +18,17 @@ public class FrontPageController {
 
     @RequestMapping("/")
     public String loadFrontPage(Model model){
-        model.addAttribute("postsToday", postService.getPostsByDate(LocalDate.now()));
+        model.addAttribute("postsToday", postService.convertPostsListToPostsWithoutIdList(
+                postService.getPostsByDate(LocalDate.now())));
         model.addAttribute("dateForm", new DateForm());
         return "index";
     }
 
     @RequestMapping("/submit-date")
     public String loadFrontPageWithGivenDate(Model model, DateForm dateForm){
-        model.addAttribute("postsToday", postService.getPostsByDate(dateForm.getSelectedDate()));
+        model.addAttribute("postsToday", postService.convertPostsListToPostsWithoutIdList(
+                postService.getPostsByDate(dateForm.getSelectedDate())));
         model.addAttribute("dateForm", new DateForm());
-
         return "index";
     }
 }
